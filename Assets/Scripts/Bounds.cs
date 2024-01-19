@@ -4,21 +4,18 @@ using UnityEngine;
 
 public class Bounds : MonoBehaviour
 {
-    [Header("Bound")]
+    [Header("Bounds Transform")]
     public Transform vectorBack;
+    public Transform vectorForward;
     public Transform vectorRight;
     public Transform vectorLeft;
-    public Transform vectorForward;
 
-    public void LateUpdate()
+    private void LateUpdate()
     {
         Vector3 viewPos = transform.position;
-        viewPos.z = Mathf.Clamp(viewPos.z, vectorBack.transform.position.z , vectorForward.transform.position.z);   //Min ve max degerleri tanimalamak icin Clamp
+        viewPos.z = Mathf.Clamp(viewPos.z, vectorBack.transform.position.z, vectorForward.transform.position.z);
         viewPos.x = Mathf.Clamp(viewPos.x, vectorLeft.transform.position.x, vectorRight.transform.position.x);
         transform.position = viewPos;
     }
-
-
-
 
 }//class
