@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     public GameObject Camera;
     public Transform vectorBack;
     public Transform vectorForward;
+    public GameObject[] Fracture;
 
     [Header("Get Component")]
     private Touch touch;
@@ -63,7 +64,13 @@ public class Player : MonoBehaviour
     {
         if(hit.gameObject.CompareTag("Obstacle(Enemy)"))
         {
-            gameObject.SetActive(false);
+            gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            foreach (GameObject item in Fracture)
+            {
+                item.GetComponent<SphereCollider>().enabled = true;
+                item.GetComponent<Rigidbody>().isKinematic = false;
+                
+            }
         }
     }
 
