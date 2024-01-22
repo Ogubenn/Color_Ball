@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public GameObject Camera;
+    public Transform vectorBack;
+    public Transform vectorForward;
+
     [Header("Get Component")]
     private Touch touch;
     private Rigidbody rb;
 
     [Range(10, 100)]
     public float speedModifier;
+    [Range(5,30)]
+    public int forwordSpeed;
     
 
     private void Awake()
@@ -20,12 +26,16 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+      
         if(Input.touchCount > 0)
         {
 
             touch = Input.GetTouch(0);
 
-            if(touch.phase == TouchPhase.Moved)
+            if (touch.phase == TouchPhase.Began)
+                Variables.firtTouch = 1;
+
+            else if (touch.phase == TouchPhase.Moved)
             {
                 rb.velocity = new Vector3(touch.deltaPosition.x * speedModifier * Time.deltaTime,
                                           transform.position.y,
@@ -38,7 +48,24 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void LateUpdate()
+    {
+        if (Variables.firtTouch == 1)
+        {
+            transform.position += new Vector3(0, 0, forwordSpeed * Time.deltaTime);
+            Camera.transform.position += new Vector3(0, 0, forwordSpeed * Time.deltaTime);
+            vectorBack.transform.position += new Vector3(0, 0, forwordSpeed * Time.deltaTime);
+            vectorForward.transform.position += new Vector3(0, 0, forwordSpeed * Time.deltaTime);
+        }
+    }
 
+    private void OnCollisionEnter(Collision hit)
+    {
+        if(hit.gameObject.CompareTag("Obstacle(Enemy)"))
+        {
+            gameObject.SetActive(false);
+        }
+    }
 
 
 
