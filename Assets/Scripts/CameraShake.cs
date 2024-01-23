@@ -5,36 +5,32 @@ using UnityEngine;
 public class CameraShake : MonoBehaviour
 {
 
-    private bool shakeControll;
-    public IEnumerator cameraShakes(float duration,float magnetidue)
+    private bool shakeControl = false;
+    public IEnumerator cameraShake(float duration,float magnitude)
     {
-        Vector3 orgPos = transform.localPosition; //Kamera orjinal pozisyon
+        Vector3 originalPos = transform.localPosition;
 
         float elapsed = 0.0f;
 
-        while (elapsed < duration)
+        while(elapsed < duration)
         {
-            float x = Random.Range(-1f, 1f) * magnetidue;
-            float y = Random.Range(-1f, 1f) * magnetidue;
-
-            transform.localPosition = new Vector3(x, y, orgPos.z);
-
+            float x = Random.Range(-1f, 1f) * magnitude;
+            float y = Random.Range(-1f, 1f) * magnitude;
+            transform.localPosition = new Vector3(x, y, originalPos.z);
             elapsed += Time.deltaTime;
             yield return null;
         }
-
-        transform.localPosition = orgPos;
-
-
+        transform.localPosition = originalPos;
+        Debug.Log("Camera Shake Ok");
     }
+
     public void CameraShakesCall()
     {
-        if(shakeControll == false)
+        if (!shakeControl)
         {
-            StartCoroutine(cameraShakes(0.22f, 0.4f));
-            shakeControll = true;
+            StartCoroutine(cameraShake(0.22f, 0.4f));
+            shakeControl = true;
         }
     }
-
 
 }//class

@@ -5,46 +5,38 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    [Range(0.0001f,0.001f)]
-    public float WhiteEffectTimer = 0.001f; //Beyaz efektin s¸resi
+    public Image whiteEffect›mg;
+    private int effectControl = 0;
 
-
-    [SerializeField] Image WhiteScreen›mg;
-    private bool WhiteEffectControl = false;
-
-    public IEnumerator WhiteScreen()
+    public IEnumerator WhiteEffect()
     {
-        Debug.Log("Test Courutine ok");
-        WhiteScreen›mg.gameObject.SetActive(true);
-
-        while (!WhiteEffectControl)
+        whiteEffect›mg.gameObject.SetActive(true);
+        while (effectControl == 0)
         {
-            Debug.Log("Test While 1/2 ok");
-            yield return new WaitForSeconds(WhiteEffectTimer);
-            WhiteScreen›mg.color += new Color(0, 0, 0, 0.1f);
-            if (WhiteScreen›mg.color == new Color(WhiteScreen›mg.color.r, WhiteScreen›mg.color.g, WhiteScreen›mg.color.b, 1))
+            yield return new WaitForSeconds(0.001f);
+            whiteEffect›mg.color += new Color(0, 0, 0, 0.1f);
+            if (whiteEffect›mg.color == new Color(whiteEffect›mg.color.r, whiteEffect›mg.color.g, whiteEffect›mg.color.b, 1))
             {
-                Debug.Log("White effect test ok 1/2");
-                WhiteEffectControl = true;
-            }
-
-        }
-
-        while (WhiteEffectControl)
-        {
-            Debug.Log("Test While 2/2 ok");
-            yield return new WaitForSeconds(WhiteEffectTimer);
-            WhiteScreen›mg.color -= new Color(0, 0, 0, 0.1f);
-            if(WhiteScreen›mg.color == new Color(WhiteScreen›mg.color.r, WhiteScreen›mg.color.g, WhiteScreen›mg.color.b, 0))
-            {
-                Debug.Log("White effect test ok 2/2");
-                WhiteEffectControl = false;
+                Debug.Log("Renk paleti 1'e ulasti");
+                effectControl = 1;
 
             }
         }
+        while(effectControl == 1)
+        {
+            yield return new WaitForSeconds(0.001f);
+            whiteEffect›mg.color -= new Color(0, 0, 0, 0.1f);
+            if(whiteEffect›mg.color == new Color(whiteEffect›mg.color.r, whiteEffect›mg.color.g, whiteEffect›mg.color.b, 0))
+            {
+                effectControl = 2;
+            }
+        }
 
+        if(effectControl == 2)
+        {
+            Debug.Log("White effect bitti");
+        }
     }
-
 
 
 }//class

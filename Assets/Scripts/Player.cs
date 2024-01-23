@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public CameraShake camerashake;
+    public UIManager uiManager;
+
     public GameObject Camera;
     public Transform vectorBack;
     public Transform vectorForward;
@@ -64,7 +67,10 @@ public class Player : MonoBehaviour
     {
         if(hit.gameObject.CompareTag("Obstacle(Enemy)"))
         {
+            camerashake.CameraShakesCall();
+            uiManager.StartCoroutine("WhiteEffect");
             gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            forwordSpeed = 0;
             foreach (GameObject item in Fracture)
             {
                 item.GetComponent<SphereCollider>().enabled = true;
