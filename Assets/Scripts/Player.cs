@@ -20,12 +20,15 @@ public class Player : MonoBehaviour
     public float speedModifier;
     [Range(5,30)]
     public int forwordSpeed;
-    
+    public int BackupForwordSpeed;
 
+    private void Start()
+    {
+        BackupForwordSpeed = forwordSpeed;
+    }
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-
     }
 
     private void Update()
