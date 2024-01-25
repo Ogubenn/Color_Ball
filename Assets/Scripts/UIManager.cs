@@ -23,6 +23,12 @@ public class UIManager : MonoBehaviour
     public GameObject Ýap;
     public GameObject info;
 
+    [Header("First Disable Gameobject")]
+    public GameObject TouchHand;
+    public GameObject TopToMoveText;
+    public GameObject shopUý;
+    public GameObject NoadsUý;
+
 
     private void Start()
     {
@@ -34,16 +40,23 @@ public class UIManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("Vibration", 1);
         }
-        /*
-        else if(PlayerPrefs.GetInt("Sound") == 1)
-        {
-            Sound_Close();
-        }
-        else if(PlayerPrefs.GetInt("Sounds") != 1)
-        {
-            Sound_On();
-        }
-        */
+    }
+
+
+    public void FirtTouch()
+    {
+        settingsOpen.SetActive(false);
+        settingsClose.SetActive(false);
+        soundsOn.SetActive(false);
+        soundsClose.SetActive(false);
+        vibrationClose.SetActive(false);
+        vibrationOn.SetActive(false);
+        TopToMoveText.SetActive(false);
+        TouchHand.SetActive(false);
+        NoadsUý.SetActive(false);
+        shopUý.SetActive(false);
+        Ýap.SetActive(false);
+        info.SetActive(false);
     }
 
 

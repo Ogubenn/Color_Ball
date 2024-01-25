@@ -6,6 +6,8 @@ public class CameraShake : MonoBehaviour
 {
 
     private bool shakeControl = false;
+
+    #region Camera Shake
     public IEnumerator cameraShake(float duration,float magnitude)
     {
         Vector3 originalPos = transform.localPosition;
@@ -32,5 +34,6 @@ public class CameraShake : MonoBehaviour
             shakeControl = true;
         }
     }
+    #endregion
 
 }//class

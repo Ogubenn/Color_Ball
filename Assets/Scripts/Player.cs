@@ -40,7 +40,10 @@ public class Player : MonoBehaviour
             touch = Input.GetTouch(0);
 
             if (touch.phase == TouchPhase.Began)
+            {
                 Variables.firtTouch = 1;
+                uiManager.FirtTouch();
+            }
 
             else if (touch.phase == TouchPhase.Moved)
             {
