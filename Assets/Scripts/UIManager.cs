@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -22,12 +23,15 @@ public class UIManager : MonoBehaviour
     public GameObject vibrationClose;
     public GameObject Ýap;
     public GameObject info;
+    public GameObject LayoutBackground;
 
     [Header("First Disable Gameobject")]
     public GameObject TouchHand;
     public GameObject TopToMoveText;
     public GameObject shopUý;
     public GameObject NoadsUý;
+
+    public GameObject RestartButton;
 
 
     private void Start()
@@ -57,8 +61,21 @@ public class UIManager : MonoBehaviour
         shopUý.SetActive(false);
         Ýap.SetActive(false);
         info.SetActive(false);
+        LayoutBackground.SetActive(false);
     }
 
+    public void RestartButtonActive()
+    {
+        RestartButton.SetActive(true);
+    }
+
+    public void RestartSceene()
+    {
+        Variables.firtTouch = 0;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Time.timeScale = 1;
+
+    }
 
     #region Button Fonksiyon
     public void Settings_Open()
@@ -66,7 +83,6 @@ public class UIManager : MonoBehaviour
         settingsOpen.SetActive(false);
         settingsClose.SetActive(true);
         LayoutAnimator.SetTrigger("SlideÝn");
-        Player.forwordSpeed = 0;
         if(PlayerPrefs.GetInt("Sound") == 1)
         {
             soundsOn.SetActive(true);
@@ -97,7 +113,6 @@ public class UIManager : MonoBehaviour
         settingsOpen.SetActive(true);
         settingsClose.SetActive(false);
         LayoutAnimator.SetTrigger("SlideOut");
-        Player.forwordSpeed = Player.BackupForwordSpeed;
         Debug.Log("SlideOut Ok");
     }
 
