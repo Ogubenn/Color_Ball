@@ -32,6 +32,16 @@ public class UIManager : MonoBehaviour
     public GameObject NoadsUý;
 
     public GameObject RestartButton;
+    public Text CoinText;
+
+    [Header("Game Finish Screen")]
+    public GameObject finishScreen;
+    public GameObject Finishbackground;
+    public GameObject FinishCompleted;
+    public GameObject FinishRadialShane;
+    public GameObject FinishCoin;
+    public GameObject FinishRewarded;
+    public GameObject FinishNoThanks;
 
 
     private void Start()
@@ -44,9 +54,12 @@ public class UIManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("Vibration", 1);
         }
+
+        CoinTextUpdate();
     }
 
 
+    #region First Touch Funk.
     public void FirtTouch()
     {
         settingsOpen.SetActive(false);
@@ -63,6 +76,16 @@ public class UIManager : MonoBehaviour
         info.SetActive(false);
         LayoutBackground.SetActive(false);
     }
+    #endregion
+
+    #region Coin Text Funk.
+    public void CoinTextUpdate()
+    {
+        CoinText.text = PlayerPrefs.GetInt("Coinn").ToString();
+    }
+    #endregion
+
+    #region Restart Funk.
 
     public void RestartButtonActive()
     {
@@ -76,6 +99,8 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 1;
 
     }
+
+    #endregion
 
     #region Button Fonksiyon
     public void Settings_Open()
@@ -146,6 +171,31 @@ public class UIManager : MonoBehaviour
         PlayerPrefs.SetInt("Vibration", 1);
         Debug.Log("Vibration Off");
     }
+
+    public void FinishScreen()
+    {
+        StartCoroutine("FinishLaunch");
+    }
+    
+
+    public IEnumerator FinishLaunch()
+    {
+        Time.timeScale = 0.3f;
+        finishScreen.SetActive(true);
+        Finishbackground.SetActive(true);
+        yield return new WaitForSecondsRealtime(0.8f);
+        FinishCompleted.SetActive(true);
+        yield return new WaitForSecondsRealtime(1.3f);
+        FinishCoin.SetActive(true);
+        FinishRadialShane.SetActive(true);
+        yield return new WaitForSecondsRealtime(0.8f);
+        FinishRewarded.SetActive(true);
+        yield return new WaitForSecondsRealtime(3f);
+        FinishNoThanks.SetActive(true);
+    }
+
+    
+        
 
     public void PrivacyPolicy()
     {

@@ -114,7 +114,6 @@ public class Player : MonoBehaviour
         yield return new WaitForSecondsRealtime(0.4f);
         Time.timeScale = 0.4f;
         yield return new WaitForSecondsRealtime(0.6f);
-        //BackupForwordSpeed = 0;
         uiManager.RestartButtonActive();
         rb.velocity = Vector3.zero;
         
