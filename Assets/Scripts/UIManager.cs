@@ -9,7 +9,9 @@ public class UIManager : MonoBehaviour
     public Image whiteEffectÝmg;
     private int effectControl = 0;
     public Player Player;
-
+    public Image FillLevelÝmg;
+    public GameObject player;
+    public GameObject FinishLine;
 
     [Header("Layout Group Variables")]
     public Animator LayoutAnimator;
@@ -42,6 +44,8 @@ public class UIManager : MonoBehaviour
     public GameObject FinishCoin;
     public GameObject FinishRewarded;
     public GameObject FinishNoThanks;
+    private bool radianeShane = false;
+    public float RadialShaneSpeed = 15f;
 
 
     private void Start()
@@ -56,6 +60,17 @@ public class UIManager : MonoBehaviour
         }
 
         CoinTextUpdate();
+    }
+
+
+    private void Update()
+    {
+         if(radianeShane)
+        {
+            FinishRadialShane.GetComponent<RectTransform>().Rotate(new Vector3(0, 0, RadialShaneSpeed * Time.deltaTime));
+        }
+
+        FillLevelÝmg.fillAmount = ((Player.transform.position.z*100) / (FinishLine.transform.position.z))/100; //100 le çarpýp 100e bölmemizin sebebi baþlangýç pozisyonunu gözardý etmek istememiz.
     }
 
 
@@ -180,7 +195,8 @@ public class UIManager : MonoBehaviour
 
     public IEnumerator FinishLaunch()
     {
-        Time.timeScale = 0.3f;
+        Time.timeScale = 0.5f;
+        radianeShane = true;
         finishScreen.SetActive(true);
         Finishbackground.SetActive(true);
         yield return new WaitForSecondsRealtime(0.8f);
