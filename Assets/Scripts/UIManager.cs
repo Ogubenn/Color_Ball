@@ -46,6 +46,9 @@ public class UIManager : MonoBehaviour
     public GameObject FinishNoThanks;
     private bool radianeShane = false;
     public float RadialShaneSpeed = 15f;
+    public GameObject AchievedCoin;
+    public GameObject NextLevel;
+    public Text AchievedcoinText;
 
 
     private void Start()
@@ -113,6 +116,13 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Time.timeScale = 1;
 
+    }
+
+    public void NextSceene()
+    {
+        Variables.firtTouch = 0;
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     #endregion
@@ -210,8 +220,26 @@ public class UIManager : MonoBehaviour
         FinishNoThanks.SetActive(true);
     }
 
-    
-        
+    public IEnumerator AfterRewardButton()
+    {
+        AchievedCoin.SetActive(true);
+        AchievedcoinText.gameObject.SetActive(true);
+        FinishRewarded.SetActive(false);
+        FinishNoThanks.SetActive(false);
+        for (int i = 0; i <= 400; i += 4)
+        {
+            AchievedcoinText.text = "+" + i.ToString();
+            yield return new WaitForSeconds(0.0001f);
+        }  
+        yield return new WaitForSecondsRealtime(1f);
+        NextLevel.SetActive(true);
+
+
+
+    }
+
+
+
 
     public void PrivacyPolicy()
     {

@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
 
     public int StageFinishCoin = 100; // Testten sonra private yap
     public UIManager uiManager;
+    public RewardedAds rewardedAds;
+    public InterstitialAds interstitialAds;
 
     public void Start()
     {
@@ -20,6 +22,8 @@ public class GameManager : MonoBehaviour
         if(other.gameObject.CompareTag("Player") && gameObject.CompareTag("FinishLine"))
         {
             Debug.Log("Level bitti");
+            rewardedAds.LoadRewardedAd();
+            interstitialAds.LoadInterstitialAd();
             CoinCalculator(StageFinishCoin);
             uiManager.CoinTextUpdate();
             uiManager.FinishScreen();
