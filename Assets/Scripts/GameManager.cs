@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
             CoinCalculator(StageFinishCoin);
             uiManager.CoinTextUpdate();
             uiManager.FinishScreen();
+            PlayerPrefs.SetInt("LevelIndex", PlayerPrefs.GetInt("LevelIndex") + 1);
             
         }
     }
