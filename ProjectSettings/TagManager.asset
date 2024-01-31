@@ -15,7 +15,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - "\u0130mage"
   - 
   - 
   - 
@@ -44,4 +44,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: "\u0130mage"
+    uniqueID: 2858373039
+    locked: 0
+  - name: Background
+    uniqueID: 2289453443
     locked: 0

@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
         }
 
         else
-            PlayerPrefs.SetInt("Coinn", 0);
+            PlayerPrefs.SetInt("Coinn", 50000);//0 yap
     }
 
 
