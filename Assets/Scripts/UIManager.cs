@@ -6,12 +6,15 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
+    public SoundsManager Sound;
     public Image whiteEffectÝmg;
     private int effectControl = 0;
     public Player Player;
     public Image FillLevelÝmg;
     public GameObject player;
     public GameObject FinishLine;
+    public GameObject SoundsPitch;
+    private AudioSource pitchForword;
 
     [Header("Layout Group Variables")]
     public Animator LayoutAnimator;
@@ -51,9 +54,15 @@ public class UIManager : MonoBehaviour
     public Text AchievedcoinText;
 
 
-    private void Start()
+
+    public void Awake()
     {
-        if(!PlayerPrefs.HasKey("Sound"))
+        pitchForword = SoundsPitch.GetComponent<AudioSource>();
+    }
+    public void Start()
+    {
+        
+        if (!PlayerPrefs.HasKey("Sound"))
         {
             PlayerPrefs.SetInt("Sound", 1);
         }
@@ -71,14 +80,16 @@ public class UIManager : MonoBehaviour
     }
 
 
-    private void Update()
+    public void Update()
     {
          if(radianeShane)
         {
             FinishRadialShane.GetComponent<RectTransform>().Rotate(new Vector3(0, 0, RadialShaneSpeed * Time.deltaTime));
         }
 
-        FillLevelÝmg.fillAmount = ((Player.transform.position.z*100) / (FinishLine.transform.position.z))/100; //100 le çarpýp 100e bölmemizin sebebi baþlangýç pozisyonunu gözardý etmek istememiz.
+        FillLevelÝmg.fillAmount = ((Player.transform.position.z * 100) / (FinishLine.transform.position.z)) / 100;
+        //100 le çarpýp 100e bölmemizin sebebi baþlangýç pozisyonunu gözardý etmek istememiz.
+        pitchForword.pitch += 0.0001f;
     }
 
 
@@ -219,15 +230,21 @@ public class UIManager : MonoBehaviour
         radianeShane = true;
         finishScreen.SetActive(true);
         Finishbackground.SetActive(true);
+        Sound.CompleteSound();
         yield return new WaitForSecondsRealtime(0.8f);
+        Sound.CompleteSound();
         FinishCompleted.SetActive(true);
         yield return new WaitForSecondsRealtime(1.3f);
+        Sound.CompleteSound();
         FinishCoin.SetActive(true);
         FinishRadialShane.SetActive(true);
         yield return new WaitForSecondsRealtime(0.8f);
         FinishRewarded.SetActive(true);
+        Sound.CompleteSound();
         yield return new WaitForSecondsRealtime(3f);
         FinishNoThanks.SetActive(true);
+        Sound.CompleteSound();
+
     }
 
     public IEnumerator AfterRewardButton()
@@ -277,6 +294,7 @@ public class UIManager : MonoBehaviour
             {
                 Debug.Log("Renk paleti 1'e ulasti");
                 effectControl = 1;
+                pitchForword.pitch = 0.5f;
 
             }
         }

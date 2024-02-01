@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
 {
     public CameraShake camerashake;
     public UIManager uiManager;
+    public SoundsManager sounds;
 
     public GameObject Camera;
     public Transform vectorBack;
@@ -24,6 +25,8 @@ public class Player : MonoBehaviour
 
     private bool speedBallforword = false;
     private bool firstTouchControl = false;
+
+    private int soundLimitCount;
 
     
     private void Awake()
@@ -96,7 +99,17 @@ public class Player : MonoBehaviour
             camerashake.CameraShakesCall();
             uiManager.StartCoroutine("WhiteEffect");
             gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            sounds.BlowUpSound();
             forwordSpeed = 0;
+            if(PlayerPrefs.GetInt("Vibration") == 1)
+            {
+                Vibration.Vibrate(100);
+            }
+            else if(PlayerPrefs.GetInt("Vibration") == 2)
+            {
+                Debug.Log("Vibration off");
+            }
+            
             foreach (GameObject item in Fracture)
             {
                 item.GetComponent<SphereCollider>().enabled = true;
@@ -105,6 +118,16 @@ public class Player : MonoBehaviour
             }
             StartCoroutine(TimeScaleControl());
             
+        }
+
+        if(hit.gameObject.CompareTag("Untagged"))
+        {
+            
+            soundLimitCount += 1;
+        }
+        if(hit.gameObject.CompareTag("Untagged") && soundLimitCount % 3 == 0)
+        {
+            sounds.ObjectHitSound();
         }
     }
 
