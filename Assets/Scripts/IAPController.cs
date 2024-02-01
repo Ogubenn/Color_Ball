@@ -8,7 +8,7 @@ public class IAPController : MonoBehaviour, IStoreListener
 {
     public UIManager uimanager;
     //public SoundManager sounds;
-    IStoreController controller;
+    protected IStoreController controller;
 
     public string[] product;
 
@@ -49,31 +49,52 @@ public class IAPController : MonoBehaviour, IStoreListener
     {
         if (string.Equals(e.purchasedProduct.definition.id, product[0], StringComparison.Ordinal))
         {
-            PlayerPrefs.SetInt("moneyy", PlayerPrefs.GetInt("moneyy") + 2500);
+            PlayerPrefs.SetInt("Coinn", PlayerPrefs.GetInt("Coinn") + 5000);
             uimanager.CoinTextUpdate();
             //sounds.CashSound();
             return PurchaseProcessingResult.Complete;
         }
         else if (string.Equals(e.purchasedProduct.definition.id, product[1], StringComparison.Ordinal))
         {
-            PlayerPrefs.SetInt("moneyy", PlayerPrefs.GetInt("moneyy") + 5000);
+            PlayerPrefs.SetInt("Coinn", PlayerPrefs.GetInt("Coinn") + 10000);
             uimanager.CoinTextUpdate();
             //sounds.CashSound();
             return PurchaseProcessingResult.Complete;
         }
         else if (string.Equals(e.purchasedProduct.definition.id, product[2], StringComparison.Ordinal))
         {
-            PlayerPrefs.SetInt("moneyy", PlayerPrefs.GetInt("moneyy") + 10000);
+            PlayerPrefs.SetInt("Coinn", PlayerPrefs.GetInt("Coinn") + 15000);
             uimanager.CoinTextUpdate();
             //sounds.CashSound();
             return PurchaseProcessingResult.Complete;
         }
         else if (string.Equals(e.purchasedProduct.definition.id, product[3], StringComparison.Ordinal))
         {
+            PlayerPrefs.SetInt("Coinn", PlayerPrefs.GetInt("Coinn") + 20000);
+            uimanager.CoinTextUpdate();
+            //sounds.CashSound();
+            return PurchaseProcessingResult.Complete;
+        }
+        else if (string.Equals(e.purchasedProduct.definition.id, product[4], StringComparison.Ordinal))
+        {
+            PlayerPrefs.SetInt("Coinn", PlayerPrefs.GetInt("Coinn") + 30000);
+            uimanager.CoinTextUpdate();
+            //sounds.CashSound();
+            return PurchaseProcessingResult.Complete;
+        }
+        else if (string.Equals(e.purchasedProduct.definition.id, product[5], StringComparison.Ordinal))
+        {
+            PlayerPrefs.SetInt("Coinn", PlayerPrefs.GetInt("Coinn") + 40000);
+            uimanager.CoinTextUpdate();
+            //sounds.CashSound();
+            return PurchaseProcessingResult.Complete;
+        }
+        else if (string.Equals(e.purchasedProduct.definition.id, product[6], StringComparison.Ordinal))
+        {
             if (PlayerPrefs.HasKey("Noads") == true)
             {
                 PlayerPrefs.SetInt("Noads", 1);
-                //uimanager.NoAdsRemove();
+                uimanager.NoAdsRemove();
                 //sounds.CashSound();
             }
             return PurchaseProcessingResult.Complete;
@@ -100,6 +121,8 @@ public class IAPController : MonoBehaviour, IStoreListener
     {
         throw new NotImplementedException();
     }
+
+
 
     //Consumble
     //Non-Consumble

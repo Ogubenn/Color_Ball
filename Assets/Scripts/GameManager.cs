@@ -22,8 +22,12 @@ public class GameManager : MonoBehaviour
         if(other.gameObject.CompareTag("Player") && gameObject.CompareTag("FinishLine"))
         {
             Debug.Log("Level bitti");
+            if(PlayerPrefs.GetInt("Noads") == 0)
+            {
+                interstitialAds.LoadInterstitialAd();
+            }
             rewardedAds.LoadRewardedAd();
-            interstitialAds.LoadInterstitialAd();
+            
             CoinCalculator(StageFinishCoin);
             uiManager.CoinTextUpdate();
             uiManager.FinishScreen();
@@ -41,7 +45,7 @@ public class GameManager : MonoBehaviour
         }
 
         else
-            PlayerPrefs.SetInt("Coinn", 50000);//0 yap
+            PlayerPrefs.SetInt("Coinn", 0);
     }
 
 

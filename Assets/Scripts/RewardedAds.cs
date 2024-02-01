@@ -69,13 +69,17 @@ public class RewardedAds : MonoBehaviour
         {
             rewardedAd.Show((Reward reward) =>
             {
+                    CoinCalculator(RewardCoin);
+                    uimanager.CoinTextUpdate();
+                
                 // TODO: Reward the user.
-                CoinCalculator(RewardCoin);
+                
                 uimanager.StartCoroutine("AfterRewardButton");
                 Debug.Log("reward");
             });
         }
     }
+
 
     private void RegisterEventHandlers(RewardedAd ad)
     {
@@ -114,12 +118,12 @@ public class RewardedAds : MonoBehaviour
 
     public void CoinCalculator(int money)
     {
-        if (PlayerPrefs.HasKey("moneyy"))
+        if (PlayerPrefs.HasKey("Coinn"))
         {
-            int oldScore = PlayerPrefs.GetInt("moneyy");
-            PlayerPrefs.SetInt("moneyy", oldScore + money);
+            int oldScore = PlayerPrefs.GetInt("Coinn");
+            PlayerPrefs.SetInt("Coinn", oldScore + money);
         }
         else
-            PlayerPrefs.SetInt("moneyy", 0);
+            PlayerPrefs.SetInt("Coinn", 0);
     }
 }

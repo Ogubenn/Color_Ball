@@ -21,8 +21,16 @@ public class BannerAds : MonoBehaviour
         // Initialize the Google Mobile Ads SDK.
         MobileAds.Initialize((InitializationStatus initStatus) =>
         {
+            if (PlayerPrefs.HasKey("Noads") == false)
+            {
+                PlayerPrefs.SetInt("Noads", 0);
+            }
+            if(PlayerPrefs.GetInt("Noads") == 0)
+            {
+                LoadAd();
+            }
             // This callback is called once the MobileAds SDK is initialized.
-            LoadAd();
+            
         });
     }
 

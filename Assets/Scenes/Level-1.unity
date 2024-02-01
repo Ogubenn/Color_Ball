@@ -1131,7 +1131,7 @@ MonoBehaviour:
   uimanager: {fileID: 1441335345}
   product:
   - coin_5000
-  - coin_1000
+  - coin_10000
   - coin_15000
   - coin_20000
   - coin_30000
@@ -9386,7 +9386,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 800946284}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1969693686}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &800946284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11707,7 +11719,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -92, y: -76}
+  m_AnchoredPosition: {x: -107, y: -76}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1020436231
@@ -19944,7 +19956,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1352595080}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1969693686}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1352595080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21537,12 +21561,12 @@ MonoBehaviour:
   Item4: {fileID: 1225482970}
   Item5: {fileID: 1603622796}
   Item6: {fileID: 931666904}
-  Item1Money: 1000
-  Item2Money: 2000
-  Item3Money: 3000
-  Item4Money: 4000
-  Item5Money: 5000
-  Item6Money: 6000
+  Item1Money: 2000
+  Item2Money: 5000
+  Item3Money: 10000
+  Item4Money: 20000
+  Item5Money: 50000
+  Item6Money: 0
   Lock1: {fileID: 413551591}
   Lock2: {fileID: 576213966}
   Lock3: {fileID: 1510419664}
@@ -27667,7 +27691,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1969693687
 RectTransform:
   m_ObjectHideFlags: 0

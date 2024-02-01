@@ -61,6 +61,11 @@ public class UIManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("Vibration", 1);
         }
+        if(PlayerPrefs.GetInt("Noads") == 1)
+        {
+            NoAdsRemove();
+        }
+            
 
         CoinTextUpdate();
     }
@@ -95,6 +100,11 @@ public class UIManager : MonoBehaviour
         LayoutBackground.SetActive(false);
     }
     #endregion
+
+    public void NoAdsRemove()
+    {
+        NoadsUý.SetActive(false);
+    }
 
     #region Coin Text Funk.
     public void CoinTextUpdate()
