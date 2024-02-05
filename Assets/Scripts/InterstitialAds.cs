@@ -75,4 +75,24 @@ public class InterstitialAds : MonoBehaviour
             }
         }
     }
+
+    public void ShowAd2()
+    {
+        if (PlayerPrefs.GetInt("Noads") == 0)
+        {
+            if(PlayerPrefs.GetInt("Vibration") == 1)
+            {
+                if (interstitialAd != null && interstitialAd.CanShowAd())
+                {
+                    Debug.Log("Showing interstitial ad.");
+                    interstitialAd.Show();
+                }
+                else
+                {
+                    Debug.LogError("Interstitial ad is not ready yet.");
+                }
+            }
+            
+        }
+    }
 }
