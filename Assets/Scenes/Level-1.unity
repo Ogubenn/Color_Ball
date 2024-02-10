@@ -7962,9 +7962,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1122559090}
-        m_TargetAssemblyTypeName: RewardedAds, Assembly-CSharp
-        m_MethodName: ShowRewardedAd
+      - m_Target: {fileID: 1122559091}
+        m_TargetAssemblyTypeName: RewardedAd, Assembly-CSharp
+        m_MethodName: ShowAd
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13566,10 +13566,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1122559087}
-  - component: {fileID: 1122559086}
-  - component: {fileID: 1122559088}
   - component: {fileID: 1122559089}
   - component: {fileID: 1122559090}
+  - component: {fileID: 1122559091}
+  - component: {fileID: 1122559092}
   m_Layer: 0
   m_Name: Admob
   m_TagString: Untagged
@@ -13577,18 +13577,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1122559086
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1122559085}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87332ce3034add141bc170afd01c8cf9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1122559087
 Transform:
   m_ObjectHideFlags: 0
@@ -13604,18 +13592,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1122559088
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1122559085}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 412a327d71ca4ef4796c7780e7245210, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1122559089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13625,9 +13601,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1122559085}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6404b76297826d342a36d7a1f50d7c61, type: 3}
+  m_Script: {fileID: 11500000, guid: e5ffcf9c45cccca4cbe324b8bea39b3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _androidGameId: 5550612
+  _iOSGameId: 5550613
+  _testMode: 1
 --- !u!114 &1122559090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13637,11 +13616,42 @@ MonoBehaviour:
   m_GameObject: {fileID: 1122559085}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ed58ed033850664cab4c3d0d15a0e26, type: 3}
+  m_Script: {fileID: 11500000, guid: a27dee680b9cc7f4f9a715d02bef401e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RewardCoin: 400
+  _androidAdUnitId: Interstitial_Android
+  _iOsAdUnitId: Interstitial_iOS
+--- !u!114 &1122559091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1122559085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ae8464cdedbac040a086b19fe36b082, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _androidAdUnitId: Rewarded_Android
+  _iOSAdUnitId: Rewarded_iOS
+  rewardedCoin: 400
   uimanager: {fileID: 1441335345}
+--- !u!114 &1122559092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1122559085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2e8fc98891fb6f44bcc58ef33fb7252, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bannerPosition: 4
+  _androidAdUnitId: Banner_Android
+  _iOSAdUnitId: Banner_iOS
 --- !u!1 &1137211682
 GameObject:
   m_ObjectHideFlags: 0
@@ -20039,8 +20049,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StageFinishCoin: 100
   uiManager: {fileID: 1441335345}
-  rewardedAds: {fileID: 1122559090}
-  interstitialAds: {fileID: 1122559089}
+  rewardedAd: {fileID: 1122559091}
+  interstitialAd: {fileID: 1122559090}
 --- !u!65 &1292004008
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26705,8 +26715,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1122559089}
-        m_TargetAssemblyTypeName: InterstitialAds, Assembly-CSharp
+      - m_Target: {fileID: 1122559090}
+        m_TargetAssemblyTypeName: InterstitialAdExample, Assembly-CSharp
         m_MethodName: ShowAd
         m_Mode: 1
         m_Arguments:

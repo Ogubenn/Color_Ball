@@ -7,8 +7,8 @@ public class GameManager : MonoBehaviour
 
     public int StageFinishCoin = 100; // Testten sonra private yap
     public UIManager uiManager;
-    public RewardedAds rewardedAds;
-    public InterstitialAds interstitialAds;
+    public RewardedAd rewardedAd;
+    public InterstitialAdExample interstitialAd;
 
     public void Start()
     {
@@ -24,9 +24,9 @@ public class GameManager : MonoBehaviour
             Debug.Log("Level bitti");
             if(PlayerPrefs.GetInt("Noads") == 0)
             {
-                interstitialAds.LoadInterstitialAd();
+                interstitialAd.LoadAd();
             }
-            rewardedAds.LoadRewardedAd();
+            rewardedAd.LoadAd();
             
             CoinCalculator(StageFinishCoin);
             uiManager.CoinTextUpdate();
