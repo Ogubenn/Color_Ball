@@ -270,11 +270,11 @@ public class UIManager : MonoBehaviour
 
     public void PrivacyPolicy()
     {
-        Application.OpenURL("https://ogubenn.com.tr/");
+        Application.OpenURL("https://policy.ogubenn.com.tr/");
     }
     public void TermOfUse()
     {
-        Application.OpenURL("https://ogubenn.com.tr/");
+        Application.OpenURL("https://termofuse.ogubenn.com.tr/");
     }
 
     #endregion
