@@ -58,6 +58,7 @@ public class UIManager : MonoBehaviour
     public void Awake()
     {
         pitchForword = SoundsPitch.GetComponent<AudioSource>();
+       
     }
     public void Start()
     {
@@ -74,7 +75,12 @@ public class UIManager : MonoBehaviour
         {
             NoAdsRemove();
         }
-            
+        if (PlayerPrefs.GetInt("Sound") == 2)
+        {
+            soundsClose.SetActive(true);
+            soundsOn.SetActive(false);
+            AudioListener.volume = 0;
+        }
 
         CoinTextUpdate();
     }
@@ -154,24 +160,24 @@ public class UIManager : MonoBehaviour
         settingsOpen.SetActive(false);
         settingsClose.SetActive(true);
         LayoutAnimator.SetTrigger("Slide›n");
-        if(PlayerPrefs.GetInt("Sound") == 1)
+        if (PlayerPrefs.GetInt("Sound") == 1)
         {
             soundsOn.SetActive(true);
             soundsClose.SetActive(false);
             AudioListener.volume = 1;
         }
-        else if(PlayerPrefs.GetInt("Sound") == 2)
+        else if (PlayerPrefs.GetInt("Sound") == 2)
         {
             soundsClose.SetActive(true);
             soundsOn.SetActive(false);
             AudioListener.volume = 0;
         }
-        if(PlayerPrefs.GetInt("Vibration") == 1)
+        if (PlayerPrefs.GetInt("Vibration") == 1)
         {
             vibrationOn.SetActive(true);
             vibrationClose.SetActive(false);
         }
-        else if(PlayerPrefs.GetInt("Vibration") == 2)
+        else if (PlayerPrefs.GetInt("Vibration") == 2)
         {
             vibrationOn.SetActive(false);
             vibrationClose.SetActive(true);
