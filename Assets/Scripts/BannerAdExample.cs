@@ -28,6 +28,7 @@ public class BannerAdExample : MonoBehaviour
         }
         if (PlayerPrefs.GetInt("Noads") == 0)
         {
+            
             LoadBanner();
             ShowBannerAd();
         }

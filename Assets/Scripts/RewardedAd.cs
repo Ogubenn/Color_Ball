@@ -56,6 +56,7 @@ public class RewardedAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
         Advertisement.Show(_adUnitId, this);
         uimanager.StartCoroutine("AfterRewardButton");
         Debug.Log("reward");
+        uimanager.FinishNoThanks.SetActive(false);
     }
 
     // Implement the Show Listener's OnUnityAdsShowComplete callback method to determine if the user gets a reward:

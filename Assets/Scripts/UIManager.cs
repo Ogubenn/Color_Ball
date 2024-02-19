@@ -29,12 +29,16 @@ public class UIManager : MonoBehaviour
     public GameObject Ýap;
     public GameObject info;
     public GameObject LayoutBackground;
+    public GameObject StopButton;
+    public GameObject PlayButton;
 
     [Header("First Disable Gameobject")]
     public GameObject TouchHand;
     public GameObject TopToMoveText;
     public GameObject shopUý;
     public GameObject NoadsUý;
+    public GameObject ShopPanel;
+    public GameObject infoPanel;
 
     public GameObject RestartButton;
     public Text CoinText;
@@ -115,8 +119,12 @@ public class UIManager : MonoBehaviour
         Ýap.SetActive(false);
         info.SetActive(false);
         LayoutBackground.SetActive(false);
+        ShopPanel.SetActive(false);
+        infoPanel.SetActive(false);
+        StopButton.SetActive(true);
     }
     #endregion
+
 
     public void NoAdsRemove()
     {
@@ -222,6 +230,19 @@ public class UIManager : MonoBehaviour
         vibrationClose.SetActive(false);
         PlayerPrefs.SetInt("Vibration", 1);
         Debug.Log("Vibration Off");
+    }
+
+    public void StopButton_On()
+    {
+        PlayButton.SetActive(true);
+        StopButton.SetActive(false);
+        Time.timeScale = 0;
+    }
+    public void PlayButton_On()
+    {
+        PlayButton.SetActive(false);
+        StopButton.SetActive(true);
+        Time.timeScale = 1;
     }
 
     public void FinishScreen()

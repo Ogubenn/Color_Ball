@@ -106,13 +106,13 @@ public class Player : MonoBehaviour
             forwordSpeed = 0;
             if(PlayerPrefs.GetInt("Vibration") == 1)
             {
-                StartCoroutine(ShowAdTime());
+                
                 
                 Vibration.Vibrate(100);
             }
             else if(PlayerPrefs.GetInt("Vibration") == 2)
             {
-                StartCoroutine(ShowAdTime());
+                
                 Debug.Log("Vibration off");
             }
             
@@ -142,16 +142,11 @@ public class Player : MonoBehaviour
         speedBallforword = true;
         yield return new WaitForSecondsRealtime(0.6f);
         Time.timeScale = 0.4f;
-        yield return new WaitForSecondsRealtime(0.8f);
+        Interstitial.ShowAd();
+        Time.timeScale = 0f;
+        yield return new WaitForSecondsRealtime(1f);
         uiManager.RestartButtonActive();
         rb.velocity = Vector3.zero;
-        
-    }
-
-    public IEnumerator ShowAdTime()
-    {
-        yield return new WaitForSecondsRealtime(1.3f);
-        Interstitial.ShowAd();
         
     }
 
