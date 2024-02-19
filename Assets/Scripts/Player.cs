@@ -141,7 +141,7 @@ public class Player : MonoBehaviour
     {
         speedBallforword = true;
         yield return new WaitForSecondsRealtime(0.6f);
-        Time.timeScale = 0.4f;
+        Time.timeScale = 0.6f;
         Interstitial.ShowAd();
         Time.timeScale = 0f;
         yield return new WaitForSecondsRealtime(1f);
